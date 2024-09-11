@@ -48,14 +48,24 @@ def merge(left: List[int], right: List[int]) -> List[int]:
             merged.append(right[right_index])
             right_index += 1
 
-    # Append any remaining elements
+    # Append any remaining elements from left or right
     merged.extend(left[left_index:])
     merged.extend(right[right_index:])
     
     return merged
 
-# Testing the merge sort on a sample array
+# Testing the merge sort with diverse test cases
 if __name__ == "__main__":
-    array = [5, 2, 4, 7, 1, 3, 2, 6]
-    sorted_array = merge_sort(array)
-    print(f"Sorted array: {sorted_array}")
+    test_cases = [
+        [5, 2, 4, 7, 1, 3, 2, 6],  # Typical case
+        [],  # Edge case: empty list
+        [1],  # Edge case: single element
+        [5, 4, 3, 2, 1],  # Reversed list
+        [1, 1, 1, 1],  # List with all identical elements
+        [-5, -2, -4, 0, 3, 2, 1],  # List with negative numbers
+        [10, 20, 30, 40, 50]  # Already sorted list
+    ]
+
+    for i, array in enumerate(test_cases):
+        sorted_array = merge_sort(array)
+        print(f"Test case {i + 1}: {sorted_array}")
